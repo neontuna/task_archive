@@ -1,6 +1,6 @@
-<h1>Customers#index</h1>
-<p>Find me in app/views/customers/index.html.erb</p>
-
+<div class="alert alert-info">
+  Welcome to the F1 Ticket Archive.  Below is a list of all customers, you can click to view tickets and contacts for that customer.  You can also search for a customer, contact, or ticket notes from the top bar.
+</div>
 
 <table class="table table-hover">
   <thead>
@@ -15,7 +15,7 @@
     <% @customers.each do |c| %>
       <tr>
         <td>
-          <%= c.custname %> 
+          <%= link_to c.custname, tasks_customer_path(c.id) %> 
         </td>
         <td>
           <%= c.city %> 

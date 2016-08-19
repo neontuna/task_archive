@@ -1,21 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :customers, only: [:index, :show] do
-    resources :contacts, only: [:index]
-    resources :tasks, only: [:index]
+  resources :customers, only: [:index] do
+    get 'tasks', on: :member
+    get 'contacts', on: :member
   end
 
-  resources :contacts, only: [:show] do
-    resources :tasks, only: [:index]
-  end
-
+  resources :contacts, only: [:show]
   resources :tasks, only: [:show]
 
+  root 'customers#index'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'customers#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

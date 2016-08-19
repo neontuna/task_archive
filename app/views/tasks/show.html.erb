@@ -14,15 +14,15 @@
       <% if @task.contact %>
         <dt>Contact</dt>
         <dd>
-          <%= @task.contact.firstname %> 
-          <%= @task.contact.lastname %>
+          <%= @task.contact.firstname.titleize %> 
+          <%= @task.contact.lastname.titleize %>
         </dd>
       <% end %>
 
       <% unless @task.description.blank? %>
         <dt>Description</dt>
         <dd>
-          <%= @task.description %>
+          <%= simple_format(@task.description) %>
         </dd>
       <% end %>
 
