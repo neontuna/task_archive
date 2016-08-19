@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
   belongs_to :customer
-  has_one :country
+  belongs_to :country
   has_many :tasks
 end

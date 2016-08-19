@@ -1,0 +1,8 @@
+:output:
+  Contact:
+    :options:
+      :fields:
+        - id
+        - firstname
+        - lastname
+        - customer_id

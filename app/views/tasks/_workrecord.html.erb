@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong>
+      <%= workrecord.technician.firstname %> 
+      <%= workrecord.technician.lastname %>
+    </strong>
+    | <%= workrecord.e.entrytimestamp.strftime("%m/%d/%Y %l:%M %p")  %> | 
+    <%= workrecord.e.hoursworked %> Hours
+  </div>
+
+  <div class="panel-body">
+    <%= simple_format(workrecord.e.summary_notes) %>
+  </div>
+
+  <% unless workrecord.e.internal_notes.empty? %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="text-muted">
+          Internal Notes:
+        </span>
+        <%= simple_format(workrecord.e.internal_notes) %>
+      </li>
+    </ul>
+  <% end %>
+
+</div>

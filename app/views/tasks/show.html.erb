@@ -1,0 +1,33 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= @task.tasktitle %> 
+      <span class="label label-default pull-right"><%= @task.tnumber %></span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Customer</dt>
+      <dd><%= @task.customer.custname %></dd>
+    
+      <% if @task.contact %>
+        <dt>Contact</dt>
+        <dd>
+          <%= @task.contact.firstname %> 
+          <%= @task.contact.lastname %>
+        </dd>
+      <% end %>
+
+      <% unless @task.description.blank? %>
+        <dt>Description</dt>
+        <dd>
+          <%= @task.description %>
+        </dd>
+      <% end %>
+
+    </dl>
+  </div>
+</div>
+
+<%= render partial: "workrecord", collection: @workrecords %>
