@@ -13,9 +13,24 @@ class SearchController < ApplicationController
       if @search_type == "contacts"
         @contacts = Contact.search(params[:q]).paginate(page: params[:page])
       elsif @search_type == "tasks"
+        @tasks = Task.search(params[:q])
+        @workentries = Workentry.search(params[:q])
+        @tasks_and_entries_all = @tasks + @workentries
+
+        # custom pagination junk
+        current_page = (params[:page] || 1).to_i
+        per_page = 20
+        @tasks_and_entries = WillPaginate::Collection.create(current_page, 30, @tasks_and_entries_all.length) do |pager|
+          start = (current_page-1) * per_page # assuming current_page is 1 based.
+          pager.replace(@tasks_and_entries_all[start, per_page])
+        end
       else
         @customers = Customer.search(params[:q]).paginate(page: params[:page])
       end
+
+      # TODO - figure out task searching on title, description AND workentry summary_notes and internal_notes.  
+
+      # TODO - figure out searching tasks within contacts and customer
 
       # @snap_its = SnapIt
       #   .search(params[:q])

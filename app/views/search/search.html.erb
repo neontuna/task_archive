@@ -12,8 +12,8 @@
     <li role="presentation" class="<%= @contacts ? "active" : nil %>">
       <%= link_to "Contacts", search_path(q: @search_term, type: "contacts") %>  
     </li>
-    <li role="presentation" class="<%= @tasks ? "active" : nil %>">
-      <%= link_to "Tasks", search_path(q: @search_term, type: "task") %>  
+    <li role="presentation" class="<%= @tasks_and_entries ? "active" : nil %>">
+      <%= link_to "Tasks", search_path(q: @search_term, type: "tasks") %>  
     </li>    
   </ul>
 </div>
@@ -37,10 +37,16 @@
     <% end %>
   <% end %>  
 
-  <% if @tasks %>
-    <% if @tasks.any? %>
-      <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
-      <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+  <% if @tasks_and_entries %>
+    <% if @tasks_and_entries.any? %>
+      <% @tasks_and_entries.each do |r| %>
+        <% if r.class.to_s == "Task" %>
+          <%= render partial: "tasks/task", locals: {task: r, search_term: @search_term} %>
+        <% else %>
+          <%= render partial: "workentries/workentry", locals: {workentry: r, search_term: @search_term} %>
+        <% end %>
+      <% end %>
+      <%= will_paginate @tasks_and_entries, renderer: BootstrapPagination::Rails %>
     <% else %>
       <h3 class="text-center">¯\_(ツ)_/¯ No tasks match that search...</h3>
     <% end %>

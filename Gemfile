@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 
 # Pagination
-gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
 # Omniauth

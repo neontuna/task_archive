@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span class="label label-default pull-right"><%= workentry.task.tnumber %></span>
+    <%= link_to task_path(workentry.task.id) do  %>
+      <strong>
+        <%= workentry.technician.firstname %> 
+        <%= workentry.technician.lastname %>
+      </strong>
+      | <%= workentry.entrytimestamp.strftime("%m/%d/%Y %l:%M %p")  %> | 
+      <%= workentry.hoursworked %> Hours
+    <% end %>
+  </div>
+
+  <div class="panel-body">
+    <%= highlight(simple_format(workentry.summary_notes), search_term) %>
+  </div>
+
+  <% unless workentry.internal_notes.empty? %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="text-muted">
+          Internal Notes:
+        </span>
+        <%= highlight(simple_format(workentry.internal_notes), search_term) %>
+      </li>
+    </ul>
+  <% end %>
+</div>
