@@ -1,0 +1,48 @@
+<div class="col-sm-8">
+ <h3 class="cust-page-heading">
+   Search Results
+ </h3>
+</div>
+
+<div class="col-sm-4">
+  <ul class="nav nav-pills pull-right">
+    <li role="presentation" class="<%= @customers ? "active" : nil %>">
+      <%= link_to "Customers", search_path(q: @search_term) %>  
+    </li>
+    <li role="presentation" class="<%= @contacts ? "active" : nil %>">
+      <%= link_to "Contacts", search_path(q: @search_term, type: "contacts") %>  
+    </li>
+    <li role="presentation" class="<%= @tasks ? "active" : nil %>">
+      <%= link_to "Tasks", search_path(q: @search_term, type: "task") %>  
+    </li>    
+  </ul>
+</div>
+
+<div class="col-sm-12 search-results">
+  <% if @customers %>
+    <% if @customers.any? %>
+      <%= render partial: "shared/customers", locals: {customers: @customers} %>
+      <%= will_paginate @customers, renderer: BootstrapPagination::Rails %>
+    <% else %>
+      <h3 class="text-center">¯\_(ツ)_/¯ No customers match that search...</h3>
+    <% end %>
+  <% end %>
+
+  <% if @contacts %>
+    <% if @contacts.any? %>
+      <%= render partial: "shared/contacts", locals: {contacts: @contacts} %>
+      <%= will_paginate @contacts, renderer: BootstrapPagination::Rails %>
+    <% else %>
+      <h3 class="text-center">¯\_(ツ)_/¯ No contacts match that search...</h3>
+    <% end %>
+  <% end %>  
+
+  <% if @tasks %>
+    <% if @tasks.any? %>
+      <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
+      <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+    <% else %>
+      <h3 class="text-center">¯\_(ツ)_/¯ No tasks match that search...</h3>
+    <% end %>
+  <% end %>    
+</div>

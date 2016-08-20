@@ -18,24 +18,24 @@
   </ul>
 </div>
 
-<div class="row">
-  <div class="col-sm-12"> 
-    <% if @tasks %>
-      <% if @tasks.any? %>
-        <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
-        <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
-      <% else %>
-        <h3 class="text-center">No Tickets to display!</h3>
-      <% end %>
 
-    <% elsif @contacts %>
-      <% if @contacts.any? %>  
-        <%= render partial: "shared/contacts", locals: {contacts: @contacts} %>
-        <%= will_paginate @contacts, renderer: BootstrapPagination::Rails %>
-      <% else %>
-        <h3 class="text-center">No Contacts to display!</h3>
-      <% end %>
+<div class="col-sm-12"> 
+  <% if @tasks %>
+    <% if @tasks.any? %>
+      <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
+      <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+    <% else %>
+      <h3 class="text-center">No Tickets to display!</h3>
     <% end %>
-  </div>
+
+  <% elsif @contacts %>
+    <% if @contacts.any? %>  
+      <%= render partial: "shared/contacts", locals: {contacts: @contacts} %>
+      <%= will_paginate @contacts, renderer: BootstrapPagination::Rails %>
+    <% else %>
+      <h3 class="text-center">No Contacts to display!</h3>
+    <% end %>
+  <% end %>
 </div>
+
 
