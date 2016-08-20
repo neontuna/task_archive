@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/create'
+
   resources :customers, only: [:index] do
     get 'tasks', on: :member
     get 'contacts', on: :member
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show]
 
   root 'customers#index'
+
+  post '/auth/azureactivedirectory/callback' => 'sessions#create'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,16 @@
+<div class="col-sm-12">
+ <h3 class="cust-page-heading">
+   <%= @contact.firstname.titleize %> <%= @contact.lastname.titleize %>
+ </h3>
+ <address>
+  <%= link_to @contact.customer.custname, contacts_customer_path(@contact.customer.id) %><br>
+  <%= @contact.city %>, <%= @contact.state %>
+ </address>
+</div>
+
+<% if @tasks.any? %>
+  <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
+  <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+<% else %>
+  <h3 class="text-center">No Tickets to display!</h3>
+<% end %>

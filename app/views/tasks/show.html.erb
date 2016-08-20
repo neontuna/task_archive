@@ -9,13 +9,16 @@
   <div class="panel-body">
     <dl class="dl-horizontal">
       <dt>Customer</dt>
-      <dd><%= @task.customer.custname %></dd>
+      <dd><%= link_to @task.customer.custname, tasks_customer_path(@task.customer.id) %>
+      </dd>
     
       <% if @task.contact %>
         <dt>Contact</dt>
         <dd>
-          <%= @task.contact.firstname.titleize %> 
-          <%= @task.contact.lastname.titleize %>
+          <%= link_to contact_path(@task.contact.id) do %>
+            <%= @task.contact.firstname.titleize %> 
+            <%= @task.contact.lastname.titleize %>
+          <% end %>
         </dd>
       <% end %>
 

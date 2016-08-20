@@ -1,0 +1,41 @@
+<div class="col-sm-10">
+ <h3 class="cust-page-heading">
+   <%= @customer.custname %>
+ </h3>
+ <address>
+   <%= @customer.city %>, <%= @customer.region %>
+ </address>
+</div>
+
+<div class="col-sm-2">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="<%= current_page?(tasks_customer_path(@customer.id)) ? "active" : nil %>">
+      <%= link_to "Tickets", tasks_customer_path(@customer.id) %>  
+    </li>
+    <li role="presentation" class="<%= current_page?(contacts_customer_path(@customer.id)) ? "active" : nil %>">
+      <%= link_to "Contacts", contacts_customer_path(@customer.id) %>  
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-sm-12"> 
+    <% if @tasks %>
+      <% if @tasks.any? %>
+        <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
+        <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+      <% else %>
+        <h3 class="text-center">No Tickets to display!</h3>
+      <% end %>
+
+    <% elsif @contacts %>
+      <% if @contacts.any? %>  
+        <%= render partial: "shared/contacts", locals: {contacts: @contacts} %>
+        <%= will_paginate @contacts, renderer: BootstrapPagination::Rails %>
+      <% else %>
+        <h3 class="text-center">No Contacts to display!</h3>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
