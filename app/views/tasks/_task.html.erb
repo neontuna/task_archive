@@ -25,7 +25,7 @@
       <% unless task.description.blank? %>
         <dt>Description</dt>
         <dd>
-          <%= highlight(simple_format(task.description), search_term) %>
+          <%= trim_and_highlight(task.description, search_term) %>
         </dd>
       <% end %>
 

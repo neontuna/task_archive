@@ -7,13 +7,13 @@
 <div class="col-sm-4">
   <ul class="nav nav-pills pull-right">
     <li role="presentation" class="<%= @customers ? "active" : nil %>">
-      <%= link_to "Customers", search_path(q: @search_term) %>  
+      <%= link_to "Customers", search_path(q: @search_term, type: "customers") %>  
     </li>
     <li role="presentation" class="<%= @contacts ? "active" : nil %>">
       <%= link_to "Contacts", search_path(q: @search_term, type: "contacts") %>  
     </li>
     <li role="presentation" class="<%= @tasks_and_entries ? "active" : nil %>">
-      <%= link_to "Tasks", search_path(q: @search_term, type: "tasks") %>  
+      <%= link_to "Tasks", search_path(q: @search_term) %>  
     </li>    
   </ul>
 </div>

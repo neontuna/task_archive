@@ -12,7 +12,7 @@
   </div>
 
   <div class="panel-body">
-    <%= highlight(simple_format(workentry.summary_notes), search_term) %>
+    <%= trim_and_highlight(workentry.summary_notes, search_term) %>
   </div>
 
   <% unless workentry.internal_notes.empty? %>
@@ -21,7 +21,7 @@
         <span class="text-muted">
           Internal Notes:
         </span>
-        <%= highlight(simple_format(workentry.internal_notes), search_term) %>
+        <%= trim_and_highlight(workentry.internal_notes, search_term) %>
       </li>
     </ul>
   <% end %>
