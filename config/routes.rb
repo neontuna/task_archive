@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/home'
+
   get 'sessions/create'
   post '/auth/azureactivedirectory/callback' => 'sessions#create'
 
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:show]
   resources :tasks, only: [:show]
 
-  root 'customers#index'
+  root 'static_pages#home'
 
 
   
