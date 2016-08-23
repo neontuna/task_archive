@@ -2,6 +2,39 @@
   Welcome to the F1 Ticket Archive.  Below is a list of all customers, you can click to view tickets and contacts for that customer.  You can also search for a customer, contact, or ticket notes from the top bar.
 </div>
 
+<div class="text-center">
+  <ul class="pagination">
+    <li class="disabled">
+      <span>
+        Filter by Name
+      </span>
+    </li>
+    <% unless params[:char] %>
+      <li class="active">  
+        <span>All</span>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "All", customers_path  %>
+      </li>
+    <% end %>
+
+    <% ('A'..'Z').each do |char| %>
+         <% if char==params[:char] %>
+              <li class="active">  
+                <span><%= char %></span>
+              </li>
+         <% else %>
+              <li>
+                <%= link_to char, customers_path(char: char) %>
+              </li>
+         <% end %>
+    <% end %>
+  </ul>
+</div>
+
 <%= render partial: "shared/customers", locals: {customers: @customers} %>
 
-<%= will_paginate @customers, renderer: BootstrapPagination::Rails %>
+<div class="text-center">
+  <%= will_paginate @customers, renderer: BootstrapPagination::Rails %>
+</div>

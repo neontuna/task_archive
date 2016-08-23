@@ -42,6 +42,9 @@ gem 'omniauth-azure-activedirectory'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Misc
+gem "figaro" # env management
+
 group :development, :test do
   # gem 'byebug'
 

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
 
-  get 'sessions/create'
-  post '/auth/azureactivedirectory/callback' => 'sessions#create'
+  post '/auth/:provider/callback' => 'sessions#create'
+  get '/signout' => 'sessions#destroy', as: :signout
 
   get 'search' => 'search#search'
 

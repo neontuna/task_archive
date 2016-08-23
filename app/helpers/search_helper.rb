@@ -3,7 +3,7 @@ module SearchHelper
     preview_chars = 300
     search_term = sanitize(search_term)
 
-    if index = text.index(search_term)
+    if index = text.index(/#{search_term}/i)
       trim = search_term.length + preview_chars
       start = index - trim >= 0 ? index - trim : 0
       if start <= 3

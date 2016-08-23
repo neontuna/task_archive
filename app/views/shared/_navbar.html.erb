@@ -16,25 +16,40 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="<%= current_page?(customers_path) ? 'active' : nil %>">
-          <%= link_to "Customer List", customers_path %>
-        </li>
-      </ul>
-      <form action="<%= search_path %>" method="get" class="navbar-form navbar-left" role="search">        
-        <div class="form-group">
-          <div class="input-group search-bar">
-            <input name="type" type="hidden" value="<%= @search_type %>">
-            <%= text_field_tag :q, params[:q], class: "form-control", placeholder:"Search" %>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <span class="sr-only">Search</span>
-              </button>
-            </span>
+      <% if current_user %>
+        
+        <p class="navbar-text navbar-right">
+          Howdy, <%= current_user.first_name %>! | 
+          <%= link_to "Sign out?", signout_path %>
+        </p>  
+
+        <ul class="nav navbar-nav">
+          <li class="<%= current_page?(customers_path) ? 'active' : nil %>">
+            <%= link_to "Customer List", customers_path %>
+          </li>
+        </ul>
+        <form action="<%= search_path %>" method="get" class="navbar-form navbar-left" role="search">        
+          <div class="form-group">
+            <div class="input-group search-bar">
+              <input name="type" type="hidden" value="<%= @search_type %>">
+              <%= text_field_tag :q, params[:q], class: "form-control", placeholder:"Search" %>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <span class="sr-only">Search</span>
+                </button>
+              </span>
+            </div>
           </div>
-        </div>      
-      </form>
+        </form>
+
+      <% else %>
+
+        <p class="navbar-text navbar-right">
+          <%= link_to "Sign in!", "/auth/azureactivedirectory"  %>
+        </p>  
+        
+      <% end %>
     </div><!-- /.navbar-collapse -->
   </div> <!-- /.container -->
 </nav>

@@ -10,7 +10,9 @@
 
 <% if @tasks.any? %>
   <%= render partial: "shared/tasks", locals: {tasks: @tasks} %>
-  <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+  <div class="text-center">
+    <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+  </div>
 <% else %>
   <h3 class="text-center">No Tickets to display!</h3>
 <% end %>
