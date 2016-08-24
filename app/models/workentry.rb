@@ -4,6 +4,8 @@ class Workentry < ActiveRecord::Base
 
   belongs_to :workrecord
 
+  
+
   def task
     workrecord.task
   end

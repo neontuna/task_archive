@@ -1,3 +1,6 @@
+# Credit to Chris for this excellent concern
+# https://gist.github.com/BideoWego/4dfa80f920c305d3cac6f0abf2fc13c4
+
 module Searchable
   def self.included(base)
     base.extend(ClassMethods)
