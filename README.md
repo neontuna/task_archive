@@ -1,5 +1,5 @@
 # task_archive
-Historical access for auto task tickets.  Uses Azure AD for authentication, only static home page shown without sign in.
+Historical access for Autotask.net tickets.  Uses Azure AD for authentication, only static home page shown without sign in.
 
 ## Environment setup
 Use figaro to set **AAD_TENANT** and **AAD_CLIENT_ID** env for Omniauth Azure AD strategy.
