@@ -19,4 +19,4 @@ The database for the app has been modified from a direct export of the Autotask 
 | dbo.tblWorkEntries  | workentries            |
 | dbo.tblWorkRecord   | workrecords            |
 
-This [blog post](http://nightiron.com/blog/2016/08/16/archiving-autotask/) goes into the specifics of working with the Autotask export and preparing Rails to use that database.
+This [blog post](https://www.neontuna.com/blog/2016/08/16/archiving-autotask/) goes into the specifics of working with the Autotask export and preparing Rails to use that database.
